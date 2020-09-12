@@ -37,3 +37,21 @@ class FieldForm(forms.Form):
                                    widget=forms.TextInput(attrs={'class': 'form-control'}),
                                    help_text="Pass valid email id with max length 20",
                                    error_messages={'required': "Please Email Id"})
+
+
+class NumberFieldForm(forms.Form):
+    Number = forms.IntegerField(label='Enter Number', label_suffix=" : ", min_value=1, max_value=100, required=False,
+                                 widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                                help_text="This value is greater than or equal to 1 & less than or equal to 100.",
+                                disabled = False, error_messages={'required': "Please Enter Number."})
+    rate = forms.FloatField(label='Rate Value', label_suffix=" : ", min_value=1, max_value=100, required=False,
+                            widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                            help_text="This value is greater than or equal to 1 & less than or equal to 100.",  disabled = False,
+                            error_messages={'required': "Please Enter rate value."})
+    fees = forms.DecimalField(label='Student Fees', label_suffix=" : ", min_value=1, max_value=100, max_digits=4,
+                              widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                              decimal_places=1, required=False,
+                              help_text="This value is greater than or equal to 1 & less than or equal to 100. "
+                                        "Also that there are no more than 4 digits in total.",
+                              disabled = False,
+                              error_messages={'required': "Please Enter Fees amount."})

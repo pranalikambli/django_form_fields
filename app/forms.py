@@ -5,24 +5,24 @@ from django.forms import CharField, EmailField, MultiValueField
 # creating a form
 class FieldForm(forms.Form):
     name = forms.CharField(label='Enter Name', label_suffix=" : ", min_length=5, max_length=50,
-                           empty_value='', required=False,
+                           required=False, disabled=False, strip=True,
                            widget=forms.TextInput(attrs={'class': 'form-control'}),
                            help_text="Name length should be 50 character.",
-                           error_messages={'required': "Please Enter your Name"}, disabled=False, strip=True)
-    slug = forms.SlugField(label='Enter slug', label_suffix=" : ", empty_value='', required=False,
+                           error_messages={'required': "Please Enter your Name"})
+    slug = forms.SlugField(label='Enter slug', label_suffix=" : ", required=False,
                            widget=forms.TextInput(attrs={'class': 'form-control'}),
-                           help_text="Enter a valid “slug” consisting of letters, numbers, underscores or hyphens.",
+                           help_text="Enter a valid slug consisting of letters, numbers, underscores or hyphens.",
                            error_messages={'required': "Please Enter slug"}, disabled=False)
     post_update = forms.DurationField(label='Enter post update duration', label_suffix=" : ",
                                       required=False, widget=forms.TextInput(attrs={'class': 'form-control'}),
                                       help_text="Duration format should be(45:15:10)",
                                       error_messages={'required': "Please enter post update duration"}, disabled=False)
-    loopback = forms.GenericIPAddressField(label='Enter Loopback IP Address', label_suffix=" : ", empty_value="",
+    loopback = forms.GenericIPAddressField(label='Enter Loopback IP Address', label_suffix=" : ",
                                            required=True, widget=forms.TextInput(attrs={'class': 'form-control'}),
                                            help_text="Loopback IP Address format should be(100.10.0.1)",
                                            protocol='IPv4', unpack_ipv4=False, disabled=False,
                                            error_messages={'required': "Please enter Loopback IP Address"})
-    regex = forms.RegexField(label='Enter Regex', label_suffix=" : ", empty_value="", min_length=5, max_length=10,
+    regex = forms.RegexField(label='Enter Regex', label_suffix=" : ", min_length=5, max_length=10,
                              regex=r'^[a-zA-Z0-9]+$',
                              required=True, widget=forms.TextInput(attrs={'class': 'form-control'}),
                              help_text="Regex format should be[a-z, A-Z, 0-9]", disabled=False,
@@ -55,3 +55,17 @@ class NumberFieldForm(forms.Form):
                                         "Also that there are no more than 4 digits in total.",
                               disabled = False,
                               error_messages={'required': "Please Enter Fees amount."})
+
+class CheckBoxInputForm(forms.Form):
+    is_valid = forms.BooleanField(label='Is Valid', label_suffix = " : ",
+                                  required = True,  disabled = False,
+                                  widget=forms.widgets.CheckboxInput(attrs={'class': 'checkbox-inline'}),
+                                  help_text = "Please check the box as this field is required.",
+                                  error_messages = {'required':"Please check the box"})
+
+class EmailInputForm(forms.Form):
+    email= forms.EmailField(label='Enter Email ID', label_suffix = " : ",
+                                  required = True,  disabled = False,
+                                  widget=forms.EmailInput(attrs={'class': 'form-control'}),
+                                  help_text = "Please provide a valid email Id.",
+                                  error_messages = {'required':"Please provide valid email."})

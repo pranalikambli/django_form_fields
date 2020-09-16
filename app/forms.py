@@ -69,3 +69,10 @@ class EmailInputForm(forms.Form):
                                   widget=forms.EmailInput(attrs={'class': 'form-control'}),
                                   help_text = "Please provide a valid email Id.",
                                   error_messages = {'required':"Please provide valid email."})
+
+class URLInputForm(forms.Form):
+    url= forms.URLField(label='Enter URL', label_suffix = " : ",
+                                  required = True,  disabled = False,
+                                  widget=forms.URLInput(attrs={'class': 'form-control'}),
+                                  help_text = "Please provide a valid URL.",
+                                  error_messages = {'required':"Please provide valid URL."})

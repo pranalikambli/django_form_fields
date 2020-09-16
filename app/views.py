@@ -1,6 +1,6 @@
 from django.views.generic import FormView
 
-from .forms import FieldForm, NumberFieldForm, CheckBoxInputForm, EmailInputForm
+from .forms import FieldForm, NumberFieldForm, CheckBoxInputForm, EmailInputForm, URLInputForm
 
 
 class TextInputViews(FormView):
@@ -25,3 +25,9 @@ class EmailInputViews(FormView):
     template_name = 'email_input.html'
     form_class = EmailInputForm
     success_url = "/email_input"
+
+
+class URLInputViews(FormView):
+    template_name = 'url_input.html'
+    form_class = URLInputForm
+    success_url = "/url_input"

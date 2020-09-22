@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Django Form fields [URLInput]</h1>
+  <h1>Django Form fields [NullBooleanSelect]</h1>
   <form method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
+    <br/>
     <button type="submit" class="btn btn-success">Save</button>
   </form>
 {% endblock %}

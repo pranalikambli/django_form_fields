@@ -8,4 +8,6 @@ urlpatterns = [
     path('checkbox_input/', views.CheckBoxInputViews.as_view(), name="checkbox_input"),
     path('email_input/', views.EmailInputViews.as_view(), name="email_input"),
     path('url_input/', views.URLInputViews.as_view(), name="url_input"),
+    path('null_boolean_input/', views.NullBooleanInputViews.as_view(), name="null_boolean_input"),
+
 ]

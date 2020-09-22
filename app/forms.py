@@ -76,3 +76,10 @@ class URLInputForm(forms.Form):
                                   widget=forms.URLInput(attrs={'class': 'form-control'}),
                                   help_text = "Please provide a valid URL.",
                                   error_messages = {'required':"Please provide valid URL."})
+
+class NullBooleanForm(forms.Form):
+    url= forms.NullBooleanField(label='Gender', label_suffix = " : ",
+                                  required = True,  disabled = False,
+                                  widget=forms.NullBooleanSelect(attrs={'class': 'form-control'}),
+                                  help_text = "Select Gender.",
+                                  error_messages = {'required':"This field is required."})

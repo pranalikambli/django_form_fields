@@ -93,16 +93,16 @@ city = (
 
 
 class SelectInputForm(forms.Form):
-    # choice_field= forms.ChoiceField(label='City', label_suffix = " : ",
-    #                               required = True,  disabled = False,
-    #                               choices = city, widget=forms.Select(attrs={'class': 'form-control'}),
-    #                               error_messages = {'required':"This field is required."})
-    #
-    # typed_choice_field = forms.TypedChoiceField(label='City', label_suffix=" : ",
-    #                                  required=True, disabled=False,
-    #                                  choices=city, coerce = str, empty_value='',
-    #                                             widget=forms.Select(attrs={'class': 'form-control'}),
-    #                                  error_messages={'required': "This field is required."})
+    choice_field= forms.ChoiceField(label='City', label_suffix = " : ",
+                                  required = True,  disabled = False,
+                                  choices = city, widget=forms.Select(attrs={'class': 'form-control'}),
+                                  error_messages = {'required':"This field is required."})
+
+    typed_choice_field = forms.TypedChoiceField(label='City', label_suffix=" : ",
+                                     required=True, disabled=False,
+                                     choices=city, coerce = str, empty_value='',
+                                                widget=forms.Select(attrs={'class': 'form-control'}),
+                                     error_messages={'required': "This field is required."})
 
     file_path_file = forms.FilePathField(label='File Path', label_suffix = " : ",
                                   required = True,  disabled = False, path = "django_form_fields/",

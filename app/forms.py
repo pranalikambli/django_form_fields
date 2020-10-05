@@ -81,5 +81,31 @@ class NullBooleanForm(forms.Form):
     url= forms.NullBooleanField(label='Gender', label_suffix = " : ",
                                   required = True,  disabled = False,
                                   widget=forms.NullBooleanSelect(attrs={'class': 'form-control'}),
-                                  help_text = "Select Gender.",
+                                  error_messages = {'required':"This field is required."})
+
+city = (
+    ("mumbai", "Mumbai"),
+    ("pune", "Pune"),
+    ("delhi", "Delhi"),
+    ("surat", "Surat"),
+    ("chennai", "Chennai"),
+)
+
+
+class SelectInputForm(forms.Form):
+    # choice_field= forms.ChoiceField(label='City', label_suffix = " : ",
+    #                               required = True,  disabled = False,
+    #                               choices = city, widget=forms.Select(attrs={'class': 'form-control'}),
+    #                               error_messages = {'required':"This field is required."})
+    #
+    # typed_choice_field = forms.TypedChoiceField(label='City', label_suffix=" : ",
+    #                                  required=True, disabled=False,
+    #                                  choices=city, coerce = str, empty_value='',
+    #                                             widget=forms.Select(attrs={'class': 'form-control'}),
+    #                                  error_messages={'required': "This field is required."})
+
+    file_path_file = forms.FilePathField(label='File Path', label_suffix = " : ",
+                                  required = True,  disabled = False, path = "django_form_fields/",
+                                  recursive=True, allow_files=True, allow_folders=True, match="url.*",
+                                  widget=forms.Select(attrs={'class': 'form-control'}),
                                   error_messages = {'required':"This field is required."})

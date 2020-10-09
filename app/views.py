@@ -1,7 +1,6 @@
 from django.views.generic import FormView
 
-from .forms import FieldForm, NumberFieldForm, CheckBoxInputForm, EmailInputForm, URLInputForm,\
-    NullBooleanForm,SelectInputForm
+from .forms import *
 
 
 class TextInputViews(FormView):
@@ -44,3 +43,9 @@ class SelectInputViews(FormView):
     template_name = 'select_input.html'
     form_class = SelectInputForm
     success_url = "/select_input"
+
+
+class ClearableFileInputViews(FormView):
+    template_name = 'clearable_file_input.html'
+    form_class = ClearableFileInputForm
+    success_url = "/clearable_file_input"

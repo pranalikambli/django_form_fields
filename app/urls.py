@@ -10,5 +10,5 @@ urlpatterns = [
     path('url_input/', views.URLInputViews.as_view(), name="url_input"),
     path('null_boolean_input/', views.NullBooleanInputViews.as_view(), name="null_boolean_input"),
     path('select_input/', views.SelectInputViews.as_view(), name="select_input"),
-
+    path('clearable_file_input/', views.ClearableFileInputViews.as_view(), name="clearable_file_input"),
 ]

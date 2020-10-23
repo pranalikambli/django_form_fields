@@ -49,3 +49,9 @@ class ClearableFileInputViews(FormView):
     template_name = 'clearable_file_input.html'
     form_class = ClearableFileInputForm
     success_url = "/clearable_file_input"
+
+
+class SelectMultipleInputViews(FormView):
+    template_name = 'select_multiple_input.html'
+    form_class = SelectMultipleForm
+    success_url = "/select_multiple_input"

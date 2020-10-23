@@ -1,6 +1,14 @@
 from django import forms
 from django.forms import CharField, EmailField, MultiValueField
 
+city = (
+    ("mumbai", "Mumbai"),
+    ("pune", "Pune"),
+    ("delhi", "Delhi"),
+    ("surat", "Surat"),
+    ("chennai", "Chennai"),
+)
+
 
 # creating a form
 class FieldForm(forms.Form):
@@ -41,82 +49,93 @@ class FieldForm(forms.Form):
 
 class NumberFieldForm(forms.Form):
     Number = forms.IntegerField(label='Enter Number', label_suffix=" : ", min_value=1, max_value=100, required=False,
-                                 widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                                widget=forms.NumberInput(attrs={'class': 'form-control'}),
                                 help_text="This value is greater than or equal to 1 & less than or equal to 100.",
-                                disabled = False, error_messages={'required': "Please Enter Number."})
+                                disabled=False, error_messages={'required': "Please Enter Number."})
     rate = forms.FloatField(label='Rate Value', label_suffix=" : ", min_value=1, max_value=100, required=False,
                             widget=forms.NumberInput(attrs={'class': 'form-control'}),
-                            help_text="This value is greater than or equal to 1 & less than or equal to 100.",  disabled = False,
+                            help_text="This value is greater than or equal to 1 & less than or equal to 100.",
+                            disabled=False,
                             error_messages={'required': "Please Enter rate value."})
     fees = forms.DecimalField(label='Student Fees', label_suffix=" : ", min_value=1, max_value=100, max_digits=4,
                               widget=forms.NumberInput(attrs={'class': 'form-control'}),
                               decimal_places=1, required=False,
                               help_text="This value is greater than or equal to 1 & less than or equal to 100. "
                                         "Also that there are no more than 4 digits in total.",
-                              disabled = False,
+                              disabled=False,
                               error_messages={'required': "Please Enter Fees amount."})
 
+
 class CheckBoxInputForm(forms.Form):
-    is_valid = forms.BooleanField(label='Is Valid', label_suffix = " : ",
-                                  required = True,  disabled = False,
+    is_valid = forms.BooleanField(label='Is Valid', label_suffix=" : ",
+                                  required=True, disabled=False,
                                   widget=forms.widgets.CheckboxInput(attrs={'class': 'checkbox-inline'}),
-                                  help_text = "Please check the box as this field is required.",
-                                  error_messages = {'required':"Please check the box"})
+                                  help_text="Please check the box as this field is required.",
+                                  error_messages={'required': "Please check the box"})
+
 
 class EmailInputForm(forms.Form):
-    email= forms.EmailField(label='Enter Email ID', label_suffix = " : ",
-                                  required = True,  disabled = False,
-                                  widget=forms.EmailInput(attrs={'class': 'form-control'}),
-                                  help_text = "Please provide a valid email Id.",
-                                  error_messages = {'required':"Please provide valid email."})
+    email = forms.EmailField(label='Enter Email ID', label_suffix=" : ",
+                             required=True, disabled=False,
+                             widget=forms.EmailInput(attrs={'class': 'form-control'}),
+                             help_text="Please provide a valid email Id.",
+                             error_messages={'required': "Please provide valid email."})
+
 
 class URLInputForm(forms.Form):
-    url= forms.URLField(label='Enter URL', label_suffix = " : ",
-                                  required = True,  disabled = False,
-                                  widget=forms.URLInput(attrs={'class': 'form-control'}),
-                                  help_text = "Please provide a valid URL.",
-                                  error_messages = {'required':"Please provide valid URL."})
+    url = forms.URLField(label='Enter URL', label_suffix=" : ",
+                         required=True, disabled=False,
+                         widget=forms.URLInput(attrs={'class': 'form-control'}),
+                         help_text="Please provide a valid URL.",
+                         error_messages={'required': "Please provide valid URL."})
+
 
 class NullBooleanForm(forms.Form):
-    null_boolean_field= forms.NullBooleanField(label='Gender', label_suffix = " : ",
-                                  required = True,  disabled = False,
-                                  widget=forms.NullBooleanSelect(attrs={'class': 'form-control'}),
-                                  error_messages = {'required':"This field is required."})
-
-city = (
-    ("mumbai", "Mumbai"),
-    ("pune", "Pune"),
-    ("delhi", "Delhi"),
-    ("surat", "Surat"),
-    ("chennai", "Chennai"),
-)
+    null_boolean_field = forms.NullBooleanField(label='Gender', label_suffix=" : ",
+                                                required=True, disabled=False,
+                                                widget=forms.NullBooleanSelect(attrs={'class': 'form-control'}),
+                                                error_messages={'required': "This field is required."})
 
 
 class SelectInputForm(forms.Form):
-    choice_field= forms.ChoiceField(label='City', label_suffix = " : ",
-                                  required = True,  disabled = False,
-                                  choices = city, widget=forms.Select(attrs={'class': 'form-control'}),
-                                  error_messages = {'required':"This field is required."})
-
-    typed_choice_field = forms.TypedChoiceField(label='City', label_suffix=" : ",
+    choice_field = forms.ChoiceField(label='City', label_suffix=" : ",
                                      required=True, disabled=False,
-                                     choices=city, coerce = str, empty_value='',
-                                                widget=forms.Select(attrs={'class': 'form-control'}),
+                                     choices=city, widget=forms.Select(attrs={'class': 'form-control'}),
                                      error_messages={'required': "This field is required."})
 
-    file_path_file = forms.FilePathField(label='File Path', label_suffix = " : ",
-                                  required = True,  disabled = False, path = "django_form_fields/",
-                                  recursive=True, allow_files=True, allow_folders=True, match="url.*",
-                                  widget=forms.Select(attrs={'class': 'form-control'}),
-                                  error_messages = {'required':"This field is required."})
+    typed_choice_field = forms.TypedChoiceField(label='City', label_suffix=" : ",
+                                                required=True, disabled=False,
+                                                choices=city, coerce=str, empty_value='',
+                                                widget=forms.Select(attrs={'class': 'form-control'}),
+                                                error_messages={'required': "This field is required."})
+
+    file_path_file = forms.FilePathField(label='File Path', label_suffix=" : ",
+                                         required=True, disabled=False, path="django_form_fields/",
+                                         recursive=True, allow_files=True, allow_folders=True, match="url.*",
+                                         widget=forms.Select(attrs={'class': 'form-control'}),
+                                         error_messages={'required': "This field is required."})
 
 
 class ClearableFileInputForm(forms.Form):
-    file_field = forms.FileField(label='File Upload', label_suffix = " : ",
-                                  required = True,  disabled = False, allow_empty_file=True,
-                                  max_length=500, widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
-                                  error_messages = {'required':"This field is required."})
-    image_field = forms.ImageField(label='Image Upload', label_suffix = " : ",
-                                  required = True,  disabled = False,
-                                  widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
-                                  error_messages = {'required':"This field is required."})
+    file_field = forms.FileField(label='File Upload', label_suffix=" : ",
+                                 required=True, disabled=False, allow_empty_file=True,
+                                 max_length=500, widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
+                                 error_messages={'required': "This field is required."})
+    image_field = forms.ImageField(label='Image Upload', label_suffix=" : ",
+                                   required=True, disabled=False,
+                                   widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
+                                   error_messages={'required': "This field is required."})
+
+
+class SelectMultipleForm(forms.Form):
+    multiple_choice_field = forms.MultipleChoiceField(label='Multiple Choice Field', label_suffix=" : ",
+                                  required=True, disabled=False,
+                                  widget=forms.SelectMultiple(attrs={'class': 'form-control'}), choices=city,
+                                  error_messages={'required': "This field is required."})
+
+    typed_multiple_choice_field = forms.TypedMultipleChoiceField(label='Typed Multiple Choice Field', label_suffix=" : ",
+                                                                required=True, disabled=False,
+                                                                coerce=str, choices=city,
+                                                                widget=forms.SelectMultiple(
+                                                                    attrs={'class': 'form-control'}),
+                                                                error_messages={'required': "This field is required."})
